@@ -1,6 +1,7 @@
 import base64
 import math
 import textwrap
+import hashlib
 
 from pyasn1.codec.der import encoder
 from pyasn1.type.univ import Sequence, Integer
@@ -80,13 +81,17 @@ class LilRSA:
 
     # Sing will just encrypt with the private key
     def Sign(self,m:str)->int:
-        i = self.s2i(m)
+        h = hashlib.md5(m.encode())
+        i = self.s2i(h.hexdigest())
         return pow(i,self.d,self.n)
 
     # Validate will just decrypt using the pubkey
-    def Validate(self,m:int,hash:str)->bool:
-        ass = pow(m,self.e,self.n)
-        return self.i2s(ass) 
+    def Validate(self,sig:int,hash:str)->bool:
+        ass = pow(sig,self.e,self.n)
+        if self.i2s(ass) == hash:
+            return True
+        else:
+            return False
 
     def s2i(self,s:str) -> int:
         """
