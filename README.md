@@ -1,8 +1,6 @@
 # LilRSA
 
-When it comes to asymmetric cryptography, RSA (Rivest-Shamir-Adleman) is the default example to explain concepts regarding the topic. The algorithm is one of the first invented (1978) to do so work, rely on a pair of key reversible property of the key to encrypt with one key and roll back to the original message using the other key.
-
-In RSA standard cryptography, two key types are employed, those that will be presented during this document: The RSA public key and the RSA private key and together the private and public key form the key pair needed in the process of encryption and decryption of a message.
+When it comes to asymmetric cryptography, RSA (Rivest-Shamir-Adleman) is the default example to explain concepts regarding the topic. The algorithm is one of the first invented (1978) to do so work, rely on a pair of keys, and yhe reversible property of the key to encrypt with one key and roll back to the original message using the other key.
 
 The basic principle behind RSA is the multiplication of two factors $p$ and $q$, applying operations on these numbers it is practical to find three very large positive numbers $e$, $d$ and $n$. With these three numbers, it is possible to apply modular exponentiation to reach a strongly cyphered message. To discover the message that originated the cypher text the $p$ and $q$ would be needed, it is possible of factorizing $n$, but $n$ is a large integer, so the process is computationally inviable turning it into a $NP-Complete$ problem.
 
